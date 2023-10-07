@@ -1,0 +1,87 @@
+<section class="w-75 mx-auto shadow bg-body-secondary p-5">
+  <p class="alert alert-danger ps-1" *ngIf="errorMessageState">
+    <i class="px-3 fa-solid fa-triangle-exclamation"></i> {{ errorMessage }}
+  </p>
+  <form [formGroup]="updateForm" (ngSubmit)="handelUpdate(updateForm)">
+    <div class="py-1">
+      <label for="currentPassword">CurrentPassword</label>
+      <input
+        type="password"
+        id="currentPassword"
+        placeholder="Enter Your Current Password"
+        class="m-1 form-control"
+        formControlName="currentPassword"
+      />
+
+      <div
+        *ngIf="
+          updateForm?.get('currentPassword')?.errors &&
+          (updateForm.get('currentPassword')?.touched ||
+            updateForm.get('currentPassword')?.value.length > 0)
+        "
+        class="alert alert-danger text-center py-0 pt-1"
+      >
+        <p *ngIf="updateForm.get('currentPassword')?.getError('required')">
+          Password is Required !
+        </p>
+        <p *ngIf="updateForm.get('currentPassword')?.getError('pattern')">
+          Password is minLength 3
+        </p>
+      </div>
+    </div>
+
+    <div class="py-1">
+      <label for="password">password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter New Password"
+        class="m-1 form-control"
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          updateForm?.get('password')?.errors &&
+          (updateForm.get('password')?.touched ||
+            updateForm.get('password')?.value.length > 0)
+        "
+        class="alert alert-danger text-center py-0 pt-1"
+      >
+        <p *ngIf="updateForm.get('password')?.getError('required')">
+          Password is Required !
+        </p>
+        <p *ngIf="updateForm.get('password')?.getError('pattern')">
+          Password is minLength 3
+        </p>
+      </div>
+    </div>
+    <div class="py-1">
+      <label for="rePassword">RePassword</label>
+      <input
+        type="password"
+        id="rePassword"
+        placeholder="Confirm Password"
+        class="m-1 form-control"
+        formControlName="rePassword"
+      />
+      <div
+        *ngIf="
+          updateForm?.get('rePassword')?.errors &&
+          (updateForm.get('rePassword')?.touched ||
+            updateForm.get('rePassword')?.value.length > 0)
+        "
+        class="alert alert-danger text-center py-0 pt-1"
+      >
+        <p *ngIf="updateForm.get('rePassword')?.getError('required')">
+          rePassword is Required
+        </p>
+        <p *ngIf="updateForm.get('rePassword')?.getError('misMatch')">
+          Password confirmation is incorrect
+        </p>
+      </div>
+    </div>
+    <button type="submit" class="main-btn d-block ms-auto py2 px-3">
+      Update
+    </button>
+  </form>
+</section>

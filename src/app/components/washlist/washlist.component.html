@@ -1,0 +1,54 @@
+<section  class="pb-4">
+  <h3 class="fw-light" *ngIf="allProduct.length > 0" >WhishList ...</h3>
+  <div class="row shadow-sm gy-5 justify-content-center" *ngIf="allProduct.length > 0 else wishlist">
+    <div
+      class="colm col-sm-6 col-md-4 col-lg-3 col-xl-2 p-1 py-4 position-relative"
+      *ngFor="let product of allProduct"
+    >
+      <div class="product pb-3">
+        <div role="button" [routerLink]="['/productdetails', product._id]">
+          <img
+            class="w-100 p-2 pb-3"
+            [src]="product.imageCover"
+            alt=""
+            [alt]="product.title"
+          />
+          <h3 class="h6 ps-3 text-main fw-lighter">
+            {{ product.category.name }}
+          </h3>
+          <h4 class="h5 ps-3 text-black fw-light">
+            {{ product.title | cutText : 3 }}
+          </h4>
+          <div class="d-flex align-items-center justify-content-between px-3">
+            <span class="text-muted small"
+              >{{ product.price | currency : "EGP" }}
+            </span>
+            <span class="p-0">
+              <i class="star fa-solid fa-star"></i>
+              {{ product.ratingsAverage }}
+            </span>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="add-btn main-btn w-75 mx-auto d-block"
+          #addBtn
+          (click)="addCart(product._id, addBtn)"
+        >
+          + Add To Cart
+        </button>
+        <span class="p-3 heart" (click)="removeFromWashlist(product._id)"
+          ><i class="fa-solid fa-heart-crack"></i
+        ></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #wishlist>
+<section class="h-100">
+    <h1 class="my-5 p-3 text-center text-capitalize fw-light">
+    Your WhishList Is Empty...😥😥
+  </h1>
+</section>
+</ng-template>

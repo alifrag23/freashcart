@@ -1,0 +1,27 @@
+.card::after {
+  content: "Show";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -100px;
+  background: #f6f6f6bd;
+  z-index: 88;
+  left: 100%;
+  // inset: 0;
+  padding-top: 40px;
+  font-size: 30px;
+  font-weight: 800;
+  color: #0aad0a;
+  transition: 1s;
+}
+.card:hover::after {
+  z-index: 88;
+  left: 0%;
+  right: 0;
+}
+.card {
+  overflow: hidden;
+}

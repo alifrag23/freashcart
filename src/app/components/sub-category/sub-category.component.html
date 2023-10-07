@@ -1,0 +1,30 @@
+<section
+  class="bg-body-tertiary d-flex align-items-center m-5 p-3 py-5 shadow-lg w-75 mx-auto"
+  *ngIf="dataOfSupCategory.length >0"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img [src]="dataOfCategory.image" class="w-100" alt="category-image" />
+      </div>
+      <div class="col-md-8">
+        <h1 class="pt-4">{{ dataOfCategory.name }}</h1>
+        <p class="pb-2 fs-3">Sub Categories:</p>
+        <button
+          type="button"
+          title="subCate"
+          role="text"
+          class="btn ps-0 ms-0 btn-sm"
+          *ngFor="let item of dataOfSupCategory"
+        >
+          <button
+            type="button"
+            class="btn btn-sm text-dark bg-body-tertiary p-1 px-3 rounded-2 bg-dark-subtle m-1"
+          >
+            {{ item.name }}
+          </button>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

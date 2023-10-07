@@ -1,0 +1,162 @@
+//?===============================>>fonts.google import
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
+//?===============================>>owl-carousel import
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
+
+/* You can add global styles to this file, and also import other style files */
+$main-color: #0aad0a;
+$light-color: #f0f3f2;
+$shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+  rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+  rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+$font-family: "Encode Sans Expanded", sans-serif;
+$rating-color: #ffc908;
+$main-transition: 0.8s;
+
+.rating-color {
+  color: $rating-color;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.font-sm {
+  font-size: 14px;
+}
+
+.text-main {
+  color: $main-color;
+}
+
+.text-main-light {
+  color: $light-color;
+}
+
+.bg-main {
+  background-color: $main-color !important;
+}
+
+.bg-main-light {
+  background-color: $light-color !important;
+}
+
+.main-btn {
+  border: unset;
+  cursor: pointer;
+  color: #fff !important;
+  background-color: $main-color !important;
+  padding: 4px 8px;
+  transition: background-color $main-transition;
+  border-radius: 5px;
+}
+
+.main-btn:hover {
+  background-color: #08e208 !important;
+}
+
+.main-btn:disabled {
+  background-color: #067a0663 !important;
+  color: #ffffff8e !important;
+  cursor: not-allowed;
+}
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  z-index: 555;
+}
+
+
+.heart i {
+  // background-color: red;
+  padding: 10px;
+  opacity: 0;
+  font-size: 40px !important;
+  transform: translateY(35%);
+  color: #0aad0a;
+  transition: 1.4s;
+}
+
+.product {
+  transition: 1s;
+  border: 2px solid transparent;
+
+  &:hover {
+    border: solid 2px $main-color;
+    .add-btn {
+      opacity: 1;
+      transform: translateY(10%);
+    }
+    .heart i {
+      opacity: 1;
+      transform: translateY(-25%) !important;
+    }
+  }
+
+  .add-btn {
+    transition: transform 1s, opacity 1s;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+.active-linke {
+  background: #08e208 !important;
+  color: #fff !important;
+  border-radius: 5px !important;
+}
+a {
+  border-radius: 5px !important;
+  text-decoration: none;
+}
+section {
+  margin-top: 90px;
+  margin-bottom: 60px;
+}
+.star {
+  color: $rating-color;
+}
+.scroll-up {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 999;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+}
+
+/* Styling the scrollbar */
+::-webkit-scrollbar {
+    width: 12px
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f3f2;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $main-color;
+    box-shadow: 0 0 20px 50px $main-color;
+    border-radius: 2px;
+}
+
+.form-control:focus {
+  border: 1px solid #0aad0a3d !important;
+  box-shadow: 0 0 0 0.25rem #0aad0a3d !important;
+}
+label {
+  padding-block: 4px !important;
+}
+.img-loading {
+  width: 400px;
+  height: 400px;
+}
+.toast-top-right {
+    top: 60px !important;
+    right: 12px;
+}

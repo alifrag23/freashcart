@@ -1,0 +1,74 @@
+<section class="w-75 p-5 mx-auto bg-body-tertiary shadow-sm">
+  <p class="alert alert-danger ps-1" *ngIf="errorMessageState">
+    <i class="px-3 fa-solid fa-triangle-exclamation"></i> {{ errorMessage }}
+  </p>
+  <form [formGroup]="LoginForm" (ngSubmit)="handelLogin(LoginForm)">
+    <div class="py-2 ">
+      <label for="email">email</label>
+      <input
+        type="text"
+        id="email"
+        placeholder="Enter Your Email"
+        class="form-control"
+        formControlName="email"
+      />
+      <div
+        *ngIf="
+          LoginForm?.get('email')?.errors &&
+          (LoginForm.get('email')?.touched ||
+            LoginForm.get('email')?.value.length > 0)
+        "
+        class="alert alert-danger py-0"
+      >
+        <p *ngIf="LoginForm.get('email')?.getError('required')">
+          Email is Required
+        </p>
+        <p *ngIf="LoginForm.get('email')?.getError('email')">
+          Email is minLength 3
+        </p>
+      </div>
+    </div>
+
+    <div class="py-2">
+      <label for="password">password</label>
+      <div class="d-flex position-relative">
+        <input
+          [type]="password"
+          id="password"
+          placeholder="Enter Your Passeord"
+          class="form-control"
+          formControlName="password"
+        />
+        <button (click)="onClick(btn1)" title="Show-hide" class="btn position-absolute top-0 end-0" #btn1 type="button">
+          <i class="fa fa-eye" aria-hidden="true" *ngIf="!show" ></i>
+          <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+        </button>
+      </div>
+      <div
+        *ngIf="
+          LoginForm?.get('password')?.errors &&
+          (LoginForm.get('password')?.touched ||
+            LoginForm.get('password')?.value.length > 0)
+        "
+        class="alert alert-danger py-0"
+      >
+        <p *ngIf="LoginForm.get('password')?.getError('required')">
+          Password is Required
+        </p>
+        <p *ngIf="LoginForm.get('password')?.getError('pattern')">
+          Password is minLength 6
+        </p>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between ps-3">
+      <a class="forget-btn" routerLink="/forgtPass">forget Password</a>
+      <button [disabled]="LoginForm.invalid" type="submit" class="btn main-btn">
+        <span *ngIf="!loadRequest">Login</span>
+        <span *ngIf="loadRequest"
+          ><i class="fa-solid fa-spinner fa-spin"></i
+        ></span>
+      </button>
+    </div>
+  </form>
+</section>
